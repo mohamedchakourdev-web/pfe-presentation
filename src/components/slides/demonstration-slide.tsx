@@ -24,7 +24,7 @@ export function DemonstrationSlide({
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-     
+
 
       <div className="relative z-10 flex flex-col items-center text-center">
         {/* Pastille « live » */}
@@ -39,7 +39,14 @@ export function DemonstrationSlide({
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-green" />
           </span>
           <span className="text-sm font-medium tracking-wide text-foreground">
-            En direct
+            <a
+              href="https://ista-tiznit.vercel.app/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Lancer la démonstration
+            </a>
           </span>
           <Play className="h-3.5 w-3.5 text-brand-sky" />
         </motion.div>
