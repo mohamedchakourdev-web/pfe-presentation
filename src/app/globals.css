@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Identité OFPPT : bleu académique profond + accents vert/or ── */
+    --background: 213 58% 6%;
+    --foreground: 210 40% 98%;
+    --card: 213 46% 10%;
+    --card-foreground: 210 40% 98%;
+    --primary: 209 74% 47%; /* Bleu OFPPT */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 38% 16%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 36% 14%;
+    --muted-foreground: 211 26% 72%;
+    --accent: 145 53% 41%; /* Vert OFPPT */
+    --accent-foreground: 210 40% 98%;
+    --border: 210 36% 22%;
+    --input: 210 36% 22%;
+    --ring: 209 74% 52%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: hsl(209 74% 50% / 0.32);
+  }
+
+  /* Slim, elegant scrollbar for scrollable slide content */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(210 36% 28%);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(210 36% 38%);
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface — teintée bleu OFPPT */
+  .glass {
+    background: linear-gradient(
+      135deg,
+      hsl(212 46% 14% / 0.72),
+      hsl(213 46% 10% / 0.52)
+    );
+    backdrop-filter: blur(16px) saturate(135%);
+    -webkit-backdrop-filter: blur(16px) saturate(135%);
+    border: 1px solid hsl(205 60% 80% / 0.09);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      135deg,
+      hsl(212 46% 16% / 0.88),
+      hsl(213 46% 11% / 0.72)
+    );
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid hsl(205 60% 85% / 0.12);
+  }
+
+  /* Subtle top-light highlight on cards */
+  .card-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 80% at 50% -20%,
+      hsl(205 70% 88% / 0.09),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      120deg,
+      #ffffff 0%,
+      #cfe2f4 42%,
+      #46c7f0 100%
+    );
+  }
+
+  /* Dégradé signature OFPPT : vert → bleu (les liens du logo) */
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #37b06a, #2f9e57, #1f73d0 70%, #3ea7e6);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, #e7d49a, #d4b24c, #caa24a);
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        hsl(205 60% 85% / 0.045) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsl(205 60% 85% / 0.045) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  .bg-dots {
+    background-image: radial-gradient(
+      hsl(205 60% 85% / 0.08) 1px,
+      transparent 1px
+    );
+    background-size: 28px 28px;
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 0 1px hsl(209 74% 50% / 0.22),
+      0 0 40px -8px hsl(209 74% 50% / 0.38);
+  }
+
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      hsl(211 26% 72%) 0%,
+      hsl(210 40% 98%) 50%,
+      hsl(211 26% 72%) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    @apply animate-shimmer;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Halo lumineux multicolore (couleurs des maillons) autour du logo */
+  .logo-glow {
+    filter: drop-shadow(0 0 30px rgba(70, 199, 240, 0.45))
+      drop-shadow(0 0 64px rgba(47, 158, 87, 0.28))
+      drop-shadow(0 18px 40px rgba(5, 21, 42, 0.55));
+  }
+
+  /* Couronne de rayons en dégradé conique — masquée en anneau */
+  .conic-rays {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(47, 158, 87, 0.55) 40deg,
+      transparent 90deg,
+      rgba(154, 166, 178, 0.5) 150deg,
+      transparent 200deg,
+      rgba(31, 115, 208, 0.6) 260deg,
+      transparent 310deg,
+      rgba(70, 199, 240, 0.5) 350deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(
+      closest-side,
+      transparent 58%,
+      #000 62%,
+      #000 86%,
+      transparent 100%
+    );
+    mask: radial-gradient(
+      closest-side,
+      transparent 58%,
+      #000 62%,
+      #000 86%,
+      transparent 100%
+    );
+  }
+
+  /* Lueur subtile sous les grands titres keynote */
+  .title-glow {
+    text-shadow: 0 0 38px rgba(70, 199, 240, 0.22),
+      0 2px 26px rgba(5, 21, 42, 0.5);
+  }
+
+  /* Liseré dégradé OFPPT en haut des cartes premium */
+  .border-gradient-brand {
+    border: 1px solid transparent;
+    background: linear-gradient(hsl(213 46% 10% / 0.7), hsl(213 46% 9% / 0.55))
+        padding-box,
+      linear-gradient(
+          120deg,
+          rgba(47, 158, 87, 0.7),
+          rgba(154, 166, 178, 0.45),
+          rgba(31, 115, 208, 0.7)
+        )
+        border-box;
+  }
+}
