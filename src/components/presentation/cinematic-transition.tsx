@@ -239,8 +239,9 @@ export function CinematicTransition({ onComplete }: { onComplete: () => void }) 
           </motion.div>
 
           {/* Le logo OFPPT — point focal */}
+          {/* Le logo OFPPT — point focal */}
           <motion.div
-            className="relative z-10"
+            className="relative z-10 rounded-3xl overflow-hidden bg-white p-2"
             initial={{ opacity: 0, scale: 0.62, filter: "blur(10px)" }}
             animate={{
               opacity: [0, 1, 1, 0],

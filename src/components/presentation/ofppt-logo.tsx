@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
  * ────────────────────────────────────────────────────────────────
  */
 
-const SVG_SRC = "/ofppt-logo.svg";
+const SVG_SRC = "/ofppt.jpg";
 
 /**
  * Logo officiel complet.
@@ -121,7 +121,7 @@ export function OfpptLogo({
   variant?: "full" | "plain";
 }) {
   const Lockup = (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 ">
       <OfpptBadge className="h-12 w-12 shrink-0" />
       <div className="flex flex-col leading-none">
         <span className="font-display text-xl font-bold tracking-[0.12em] text-foreground">
